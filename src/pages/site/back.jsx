@@ -6,7 +6,9 @@ export default class Back extends Component {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+      console.log(this.props.match.params);
+  }
   render() {
     return (
       <div className="outer home">
