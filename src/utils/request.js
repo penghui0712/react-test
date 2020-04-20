@@ -1,6 +1,6 @@
 import axios from "axios";
-import store from "@/store";
-import router from "@/router";
+// import store from "@/store";
+// import router from "@/router";
 
 // 测试地址
 // axios.defaults.baseURL = '';    
@@ -26,10 +26,10 @@ axios.defaults.timeout = 60000
 
 // Request interceptor
 axios.interceptors.request.use((request) => {
-  let token = localStorage.getItem.get("token")
-  if (token) {
-    request.headers.common["Authorization"] = `Bearer ${token}`
-  }
+//   let token = localStorage.getItem.get("token")
+//   if (token) {
+//     request.headers.common["Authorization"] = `Bearer ${token}`
+//   }
 
   if (request.headers === undefined) {
     request.headers["Content-Type"] = "application/json"
@@ -42,10 +42,10 @@ axios.interceptors.request.use((request) => {
 axios.interceptors.response.use(
   (response) => {
     if (response.headers.Authorization !== undefined) {
-      store.dispatch("auth/saveToken", {
-        token: response.headers.Authorization,
-        express: response.headers.expires_in,
-      })
+    //   store.dispatch("auth/saveToken", {
+    //     token: response.headers.Authorization,
+    //     express: response.headers.expires_in,
+    //   })
     }
 
     if (
@@ -53,19 +53,19 @@ axios.interceptors.response.use(
       response.data.status === 40004 ||
       response.data.status === 40005
     ) {
-      store.dispatch("auth/removeData").then(() => {
-        router.push({ name: "login" })
-      })
+    //   store.dispatch("auth/removeData").then(() => {
+    //     router.push({ name: "login" })
+    //   })
     }
     return response.data
   },
   (error) => {
     if (error.response !== undefined) {
       const { status } = error.response
-      if (status === 401 && store.getters["auth/check"]) {
-        store.dispatch("auth/removeData").then(() => {
-          router.push({ name: "login" })
-        });
+      if (status === 401) {
+        // store.dispatch("auth/removeData").then(() => {
+        //   router.push({ name: "login" })
+        // });
       } else if (status >= 500) {
         alert("服务器异常请重试")
       } else if (status >= 404) {
@@ -77,7 +77,7 @@ axios.interceptors.response.use(
     // console.log(error)
     return Promise.reject(error)
   }
-);
+)
 
 export default axios
 
