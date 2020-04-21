@@ -30,9 +30,9 @@ export default class Index extends Component {
       <div className="outer home">
         <a href="/detail/3">去下一个星球</a>
         <Button type="primary">登录</Button>
-        <button onClick={() => this.login()}>
-          通过函数登录跳转
-        </button>
+        <button onClick={() => this.login()}>通过函数登录跳转</button>
+        <div className="big">糖尿病视网膜改变阴性</div>
+        <div className="small">眼底未见糖尿病视网膜改变特征病理改变；</div>
       </div>
     );
   }

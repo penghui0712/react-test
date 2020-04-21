@@ -6,13 +6,13 @@ import {
   Switch,
   Route
 } from "react-router-dom"
+import asyncComponent from "./../lazy/index";
 
-import Index from "./../pages/site/index";
-import Back from "./../pages/site/back";
-import Father from "./../pages/site/father";
-import Child from "./../components/child";
+// import Father from "./../pages/site/father";
+// import Child from "./../components/child";
 
-
+const Index = asyncComponent(() => import('./../pages/site/index'))
+const Back = asyncComponent(() => import("./../pages/site/back"))
 export default class App extends Component {
     render() {
         return (
