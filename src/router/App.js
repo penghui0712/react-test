@@ -13,6 +13,10 @@ import asyncComponent from "./../lazy/index";
 
 const Index = asyncComponent(() => import('./../pages/site/index'))
 const Back = asyncComponent(() => import("./../pages/site/back"))
+
+// import Index from "./../pages/site/index"
+// import Back from "./../pages/site/back";
+
 export default class App extends Component {
     render() {
         return (
@@ -20,12 +24,7 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/" component={Index} />
               <Route exact path="/detail/:id" component={Back} />
-              {/* <Route exact path="/father" component={
-                  <Father>
-                    <Route exact path="/child" component={Child} />
-                  </Father>
-                }
-              /> */}
+              
             </Switch>
           </Router>
           // <HashRouter history={hashHistory}>
